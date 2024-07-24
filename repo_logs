@@ -1,0 +1,5 @@
+Original File:             EMS.ipynb
+
+Added: 1. Just added the access to webcam to my code.
+       2. Code can now start ```videocapture(0)``` and access video feed through webcam.
+       3. Tried and performed some image processing techniques to check its functionality.
