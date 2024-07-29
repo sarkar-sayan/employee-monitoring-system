@@ -70,7 +70,7 @@ def is_outside_boundary(box, boundary):
 
 def process_frame(frame, net, output_layers, classes, desk_boundaries, last_seen, alert_displayed):
     height, width, channels = frame.shape
-    blob = cv2.dnn.blobFromImage(frame, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
+    blob = cv2.dnn.blobFromImage(frame, 0.00392, (224, 224), (0, 0, 0), True, crop=False)
     net.setInput(blob)
     outs = net.forward(output_layers)
 
@@ -115,7 +115,7 @@ def process_frame(frame, net, output_layers, classes, desk_boundaries, last_seen
     # Check alert conditions for each desk
     for desk in desk_boundaries.keys():
         if not person_in_desk[desk]:
-            if time.time() - last_seen[desk] > 5:  # 60 seconds = 1 minute
+            if time.time() - last_seen[desk] > 60:  # 60 seconds = 1 minute
                 alert_displayed[desk] = True
         if alert_displayed[desk]:
             cv2.putText(frame, f"Alert: {desk} left for over 1 minute!", (50, 50 + 30 * list(desk_boundaries.keys()).index(desk)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
