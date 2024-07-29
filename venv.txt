@@ -1,0 +1,3 @@
+$ virtualenv venv
+$ path\to\venv\Scripts\activate.bat
+$ (venv) pip install -r requirements.txt
