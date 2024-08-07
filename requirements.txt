@@ -2,3 +2,6 @@ opencv-python
 numpy
 os
 time
+dlib
+face_recognition
+pytorch torchvision torchaudio cpuonly
